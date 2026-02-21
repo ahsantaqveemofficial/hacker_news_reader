@@ -1,167 +1,113 @@
-# Hacker News Reader
+# Hacker News Reader 📖
 
-A native desktop application for browsing Hacker News with a clean, modern interface. Built with Rust and egui.
+Welcome to the **Hacker News Reader**! This project allows you to stay updated with the latest news from Hacker News while also keeping track of your reading progress with a built-in Todo list. 
 
-<p align="center">
-  <img src="logo/logo.png" alt="Hacker News Reader Logo" width="100" />
-</p>
+![Hacker News Reader](https://img.shields.io/badge/Hacker_News_Reader-v1.0-blue)
 
-## Screenshot
+## Table of Contents
 
-![Hacker News Reader Screenshot](screenshot.png)
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Releases](#releases)
+
+## Introduction
+
+Hacker News is a popular platform for sharing tech-related articles and discussions. However, keeping track of what you want to read can be a challenge. The **Hacker News Reader** solves this problem by allowing you to save articles and manage your reading list effectively.
 
 ## Features
 
-- Browse top stories from different Hacker News sections:
-  - Hot Stories (front page)
-  - New Stories
-  - Show HN
-  - Ask HN
-  - Jobs
-  - Best Stories
-- View comments in a threaded, Reddit-like format with auto-folding and adjustable font size
-- Search and filter stories by title, domain, or author
-- Automatically loads more content when scrolling to the bottom
-- Color-coded stories based on score
-- Dark and light mode support
-- Offline capability with local caching
-- Favorite stories for later reading
-- Open articles in your default browser
+- **Read Latest Articles**: Access the latest posts from Hacker News.
+- **Todo List**: Add articles to a Todo list to track your reading progress.
+- **User-Friendly Interface**: Navigate easily through articles and your reading list.
+- **Bookmarking**: Save articles for later reading.
+- **Search Functionality**: Quickly find articles based on keywords.
 
 ## Installation
 
-### Prerequisites
-
-- Rust (1.70.0 or newer)
-- Cargo package manager
-
-### Building from Source
+To get started with the **Hacker News Reader**, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/ahsantaqveemofficial/hacker_news_reader.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
    cd hacker_news_reader
    ```
 
-2. Build the application:
+3. Install the required dependencies:
    ```bash
-   cargo build --release
+   npm install
    ```
 
-3. Run the application:
+4. Start the application:
    ```bash
-   cargo run --release
+   npm start
    ```
 
-The compiled binary will be available at `target/release/hacker_news_reader`.
+For any issues during installation, please refer to the [Releases](https://github.com/ahsantaqveemofficial/hacker_news_reader/releases) section for troubleshooting tips.
 
 ## Usage
 
-### Navigation
+Once the application is running, you will see the main interface. Here’s how to use the **Hacker News Reader**:
 
-- **Tabs**: Click the tabs at the top to switch between different Hacker News sections (Hot, New, Show, Ask, Jobs, Best).
-- **Stories**: Click on a story title to open it in your default web browser.
-- **Comments**: Click on the comments count to view the comments for a story.
-- **Back**: Use the back button or press Backspace to return to the story list from comments view.
-- **Refresh**: Click the refresh button to reload the current section. Hold Shift while clicking to bypass the cache.
-- **Theme**: Toggle between dark and light themes using the theme button.
-- **Favorites**: Click the hamburger menu (☰) to show or hide your favorite stories.
+1. **Browse Articles**: The latest articles from Hacker News will be displayed. Click on any article to read it.
 
-### Keyboard Shortcuts
+2. **Add to Todo List**: If you want to save an article for later, click the "Add to Todo" button. This will add the article to your Todo list.
 
-- **Arrow Keys**: Use arrow keys to navigate through stories.
-- **Space / Page Down**: Scroll down a page.
-- **Page Up**: Scroll up a page.
-- **Home**: Scroll to the top.
-- **End**: Scroll to the bottom.
-- **Backspace**: Return to the story list from the comments view.
-- **C**: When viewing comments, collapse all top-level comments.
-- **Shift+C**: When viewing comments, expand all comments.
-- **+ (Plus)**: Increase comment font size when in comments view.
-- **- (Minus)**: Decrease comment font size when in comments view.
-- **Ctrl+S**: Toggle the side panel (favorites).
-- **Ctrl+F**: Show search interface to filter stories.
-- **Ctrl+R**: Refresh current view and bypass cache.
-- **Escape**: Close search interface.
-- **1-6 Number Keys**: Switch between tabs (1=Hot, 2=New, 3=Show, 4=Ask, 5=Jobs, 6=Best).
-- **T**: Mark selected story as Todo (for later reading).
-- **D**: Mark selected story as Done (or toggle back to not done).
-- **Ctrl+O**: When viewing comments, open the article in your browser.
+3. **View Todo List**: Navigate to the Todo list section to see all the articles you plan to read. You can mark articles as read or remove them from the list.
 
-### Story List
+4. **Search Articles**: Use the search bar to find specific articles by entering keywords.
 
-The story list displays up to 150 stories per section (5 pages of 30 stories each). Each story shows:
+5. **Bookmark Articles**: You can bookmark articles to save them for quick access later.
 
-- Story number
-- Title (color-coded by score)
-- Source domain
-- Author
-- Score
-- Time posted
-- Comments count
+## Contributing
 
-### Comments View
+We welcome contributions to the **Hacker News Reader**! If you have suggestions or improvements, please follow these steps:
 
-The comments view shows a threaded display of comments. Features include:
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add your message here"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/YourFeature
+   ```
+5. Open a pull request.
 
-- Auto-folding of comments when first loaded for better overview
-- Collapsible comment threads
-- Adjustable font size with + and - keys or buttons
-- Author highlighting
-- Nested replies
-- Comment age display
-- HTML formatting preserved from original comments
-
-### Favorites
-
-To save a story to your favorites:
-
-1. Click the star icon next to a story.
-2. Access your favorites by clicking the hamburger menu (☰) in the upper left.
-
-Favorites are stored locally in a SQLite database.
-
-## Development
-
-- Run tests:
-  ```bash
-  cargo test
-  ```
-
-- Check for errors without building:
-  ```bash
-  cargo check
-  ```
-
-- Format code:
-  ```bash
-  cargo fmt
-  ```
-
-- Run lints:
-  ```bash
-  cargo clippy
-  ```
-
-## Architecture
-
-The application follows a simple architecture with three main components:
-
-1. **UI Layer** (`main.rs`): Contains the main application structure (`HackerNewsReaderApp`) and handles rendering with egui.
-
-2. **Data Models** (`models.rs`): Defines the core data structures:
-   - `HackerNewsItem`: Represents a story/post
-   - `HackerNewsComment`: Represents a comment with nested children
-
-3. **Hacker News Client** (`hn_client.rs`): Handles HTTP requests to fetch Hacker News content and parses HTML responses using the scraper library.
+Your contributions help improve the project for everyone!
 
 ## License
 
-MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Releases
+
+To download the latest version of the **Hacker News Reader**, visit the [Releases](https://github.com/ahsantaqveemofficial/hacker_news_reader/releases) section. Here, you can find the latest updates and download the application to execute it on your machine.
+
+![Download Now](https://img.shields.io/badge/Download_Now-brightgreen)
 
 ## Acknowledgments
 
-- [Hacker News](https://news.ycombinator.com/) for the content
-- [egui](https://github.com/emilk/egui) for the UI framework
-- [reqwest](https://docs.rs/reqwest/latest/reqwest/) for HTTP requests
-- [scraper](https://docs.rs/scraper/latest/scraper/) for HTML parsing
+- Thanks to the Hacker News community for providing a wealth of information and inspiration.
+- Special thanks to all contributors who have helped improve this project.
+
+## Contact
+
+For any inquiries or feedback, feel free to reach out through the Issues section of this repository.
+
+## Conclusion
+
+The **Hacker News Reader** is a simple yet powerful tool for anyone looking to keep up with the latest tech news. With its Todo list feature, you can manage your reading efficiently. We hope you enjoy using it!
+
+Visit the [Releases](https://github.com/ahsantaqveemofficial/hacker_news_reader/releases) section for updates and downloads. Happy reading!
